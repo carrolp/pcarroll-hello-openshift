@@ -11,7 +11,7 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	helloEnv := os.Getenv("HELLO")
 
 	if helloEnv == "" {
-		helloEnv = "hello"
+		helloEnv = "tsdf hello"
 	}
 
 	arg := "openshift"
@@ -25,8 +25,16 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
+	port := "8080"
+	
+	var portEnv string
+	portEnv = os.Getenv("PORT")
+	
+	if portEnv != "" {
+		port = portEnv
+	}
+	
 	http.HandleFunc("/", hello)
-	log.Println("Starting server on 0.0.0.0:8090")
-	http.ListenAndServe(":8090", nil)
+	log.Println("Starting server on 0.0.0.0:"+port)
+	http.ListenAndServe(":"+port, nil)
 }
