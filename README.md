@@ -8,7 +8,7 @@ Create your own github repo based on this repo
 Create the build See https://docs.openshift.com/container-platform/3.11/dev_guide/builds/index.html
 
     oc apply -f buildconfig.yml
-    oc start-build hello-openshift
+    oc start-build pcarroll-hello-openshift
     oc get builds -w
 
 Fill in the pod See https://kubernetes.io/docs/concepts/workloads/pods/
